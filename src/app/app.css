@@ -1,0 +1,1613 @@
+/* =====================================
+   BASE
+===================================== */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    min-height: 100%;
+  }
+  
+  body {
+    font-family:
+      -apple-system,
+      BlinkMacSystemFont,
+      "Helvetica Neue",
+      "Noto Sans JP",
+      sans-serif;
+  }
+  
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  .app {
+    --bg: #f5f1e9;
+    --surface: #fffdf8;
+    --surface-2: #eee8dc;
+    --text: #383633;
+    --muted: #8b867c;
+    --line: #ddd6c9;
+    --accent: #6f756d;
+    --accent-text: #ffffff;
+  
+    min-height: 100vh;
+  
+    background:
+      radial-gradient(
+        circle at 15% 15%,
+        rgba(255,255,255,0.7),
+        transparent 30%
+      ),
+      var(--bg);
+  
+    color: var(--text);
+  
+    transition:
+      background 0.3s ease,
+      color 0.3s ease;
+  }
+  
+  
+  /* =====================================
+     HEADER
+  ===================================== */
+  
+  .header {
+    width: min(100%, 920px);
+  
+    margin: 0 auto;
+  
+    padding:
+      28px 24px
+      18px;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: space-between;
+  }
+  
+  .logo-area {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 14px;
+  }
+  
+  .logo-mark {
+    font-size: 30px;
+  
+    opacity: 0.7;
+  }
+  
+  .logo-area h1 {
+    margin: 0;
+  
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+  
+    font-size: 25px;
+  
+    font-weight: 500;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  .logo-area p {
+    margin: 3px 0 0;
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  
+    letter-spacing: 0.05em;
+  }
+  
+  
+  /* =====================================
+     THEME SWITCHER
+  ===================================== */
+  
+  .theme-switcher {
+    display: flex;
+  
+    gap: 7px;
+  }
+  
+  .theme-switcher button {
+    width: 35px;
+    height: 35px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 50%;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  
+    transition:
+      transform 0.25s ease,
+      background 0.25s ease;
+  }
+  
+  .theme-switcher button.active {
+    transform: scale(1.1);
+  
+    border-color:
+      var(--accent);
+  }
+  
+  
+  /* =====================================
+     MAIN
+  ===================================== */
+  
+  .main {
+    width: min(100%, 920px);
+  
+    margin: 0 auto;
+  
+    padding:
+      10px 24px
+      50px;
+  }
+  
+  
+  /* =====================================
+     SMALL TEXT
+  ===================================== */
+  
+  .eyebrow {
+    display: block;
+  
+    margin-bottom: 7px;
+  
+    color: var(--muted);
+  
+    font-size: 9px;
+  
+    letter-spacing: 0.18em;
+  }
+  
+  
+  /* =====================================
+     CALENDAR
+  ===================================== */
+  
+  .calendar-card {
+    max-width: 620px;
+  
+    margin:
+      10px auto
+      34px;
+  
+    padding: 24px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 22px;
+  
+    background: var(--surface);
+  
+    box-shadow:
+      0 12px 35px
+      rgba(0,0,0,0.04);
+  }
+  
+  .calendar-navigation {
+    display: grid;
+  
+    grid-template-columns:
+      40px 1fr 40px;
+  
+    align-items: center;
+  
+    gap: 10px;
+  
+    text-align: center;
+  }
+  
+  .calendar-navigation h2 {
+    margin: 0;
+  
+    font-family:
+      Georgia,
+      serif;
+  
+    font-size: 19px;
+  
+    font-weight: 500;
+  }
+  
+  .icon-button {
+    width: 38px;
+    height: 38px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 50%;
+  
+    background: transparent;
+  
+    color: var(--text);
+  
+    font-size: 22px;
+  }
+  
+  .today-button {
+    display: block;
+  
+    margin:
+      12px auto
+      18px;
+  
+    border: 0;
+  
+    background: transparent;
+  
+    color: var(--accent);
+  
+    font-size: 12px;
+  }
+  
+  .weekdays,
+  .calendar-grid {
+    display: grid;
+  
+    grid-template-columns:
+      repeat(7, 1fr);
+  }
+  
+  .weekdays {
+    margin-bottom: 5px;
+  
+    color: var(--muted);
+  
+    font-size: 10px;
+  
+    text-align: center;
+  }
+  
+  .calendar-day {
+    position: relative;
+  
+    min-height: 48px;
+  
+    border: 0;
+  
+    background: transparent;
+  
+    color: var(--text);
+  
+    border-radius: 12px;
+  
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  .calendar-day.empty {
+    pointer-events: none;
+  }
+  
+  .calendar-day:hover {
+    background: var(--surface-2);
+  }
+  
+  .calendar-day.selected {
+    background: var(--surface-2);
+  
+    box-shadow:
+      inset 0 0 0 1px
+      var(--line);
+  }
+  
+  .day-number {
+    display: inline-flex;
+  
+    width: 30px;
+    height: 30px;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 50%;
+  }
+  
+  .calendar-day.today .day-number {
+    box-shadow:
+      inset 0 0 0 1px
+      var(--accent);
+  }
+  
+  .plan-dot {
+    position: absolute;
+  
+    bottom: 5px;
+    left: 50%;
+  
+    width: 4px;
+    height: 4px;
+  
+    transform: translateX(-50%);
+  
+    border-radius: 50%;
+  
+    background: var(--accent);
+  }
+  
+  
+  /* =====================================
+     DAY SECTION
+  ===================================== */
+  
+  .day-section {
+    max-width: 620px;
+  
+    margin: 0 auto;
+  }
+  
+  .section-heading {
+    display: flex;
+  
+    align-items: end;
+  
+    justify-content: space-between;
+  
+    margin-bottom: 15px;
+  }
+  
+  .section-heading h2,
+  .section-heading h3 {
+    margin: 0;
+  
+    font-family:
+      Georgia,
+      serif;
+  
+    font-weight: 500;
+  }
+  
+  .section-heading h2 {
+    font-size: 21px;
+  }
+  
+  .section-heading h3 {
+    font-size: 18px;
+  }
+  
+  .empty-message,
+  .empty-script {
+    padding: 30px 20px;
+  
+    border:
+      1px dashed
+      var(--line);
+  
+    border-radius: 16px;
+  
+    color: var(--muted);
+  
+    text-align: center;
+  
+    font-size: 13px;
+  }
+  
+  
+  /* =====================================
+     PLAN
+  ===================================== */
+  
+  .plan-list {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 10px;
+  }
+  
+  .plan-card {
+    position: relative;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 15px;
+  
+    padding: 17px 18px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 16px;
+  
+    background: var(--surface);
+  
+    cursor: pointer;
+  
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  
+  .plan-card:hover {
+    transform: translateY(-2px);
+  
+    box-shadow:
+      0 8px 22px
+      rgba(0,0,0,0.05);
+  }
+  
+  .plan-symbol {
+    font-size: 22px;
+  
+    color: var(--muted);
+  }
+  
+  .plan-content {
+    flex: 1;
+  }
+  
+  .plan-content h3 {
+    margin: 0 0 4px;
+  
+    font-size: 15px;
+  
+    font-weight: 500;
+  }
+  
+  .plan-content p {
+    margin: 0;
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  }
+  
+  .delete-plan {
+    border: 0;
+  
+    background: transparent;
+  
+    color: var(--muted);
+  
+    font-size: 18px;
+  }
+  
+  
+  /* =====================================
+     NEW PLAN
+  ===================================== */
+  
+  .new-plan {
+    margin-top: 28px;
+  }
+  
+  .new-plan-row {
+    display: grid;
+  
+    grid-template-columns:
+      1fr auto auto;
+  
+    gap: 8px;
+  }
+  
+  .new-plan input,
+  .add-card input,
+  .edit-card input {
+    width: 100%;
+  
+    min-width: 0;
+  
+    padding: 12px 14px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 12px;
+  
+    outline: none;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  }
+  
+  .new-plan input:focus,
+  .add-card input:focus,
+  .edit-card input:focus,
+  .note-section textarea:focus {
+    border-color:
+      var(--accent);
+  }
+  
+  .primary-button {
+    padding:
+      0 18px;
+  
+    border: 0;
+  
+    border-radius: 12px;
+  
+    background: var(--accent);
+  
+    color: var(--accent-text);
+  }
+  
+  
+  /* =====================================
+     BACK
+  ===================================== */
+  
+  .back-button {
+    margin-bottom: 25px;
+  
+    padding: 7px 0;
+  
+    border: 0;
+  
+    background: transparent;
+  
+    color: var(--muted);
+  
+    font-size: 12px;
+  }
+  
+  
+  /* =====================================
+     SCRIPT HEADER
+  ===================================== */
+  
+  .script-header {
+    margin-bottom: 28px;
+  }
+  
+  .script-header h2 {
+    margin: 0 0 5px;
+  
+    font-family:
+      Georgia,
+      serif;
+  
+    font-size: 28px;
+  
+    font-weight: 500;
+  }
+  
+  .script-header p {
+    margin: 0;
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  }
+  
+  
+  /* =====================================
+     NOTE
+  ===================================== */
+  
+  .note-section {
+    margin-bottom: 24px;
+  }
+  
+  .note-section label {
+    display: block;
+  
+    margin-bottom: 8px;
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  }
+  
+  .note-section textarea {
+    width: 100%;
+  
+    min-height: 90px;
+  
+    resize: vertical;
+  
+    padding: 13px 14px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 13px;
+  
+    outline: none;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  
+    line-height: 1.7;
+  }
+  
+  
+  /* =====================================
+     TEMPLATE
+  ===================================== */
+  
+  .template-section {
+    margin-bottom: 28px;
+  }
+  
+  .template-toggle {
+    width: 100%;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 8px;
+  
+    padding: 13px 15px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 13px;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  
+    text-align: left;
+  
+    font-size: 12px;
+  }
+  
+  .template-toggle span:first-child {
+    color: var(--accent);
+  }
+  
+  .toggle-arrow {
+    margin-left: auto;
+  }
+  
+  .template-panel {
+    margin-top: 10px;
+  
+    padding: 16px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 16px;
+  
+    background: var(--surface);
+  }
+  
+  .template-description {
+    margin: 0 0 14px;
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  
+    line-height: 1.7;
+  }
+  
+  .template-grid {
+    display: grid;
+  
+    grid-template-columns:
+      repeat(4, 1fr);
+  
+    gap: 8px;
+  }
+  
+  .template-card {
+    display: flex;
+  
+    flex-direction: column;
+  
+    align-items: center;
+  
+    gap: 7px;
+  
+    padding: 13px 7px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 13px;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  
+    font-size: 11px;
+  
+    transition:
+      transform 0.2s ease;
+  }
+  
+  .template-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .template-icon {
+    font-size: 22px;
+  }
+  
+  
+  /* =====================================
+     SCRIPT LIST
+  ===================================== */
+  
+  .script-section {
+    max-width: 760px;
+  }
+  
+  .script-list {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 9px;
+  }
+  
+  .script-row {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 12px;
+  
+    min-height: 58px;
+  
+    padding: 10px 12px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 14px;
+  
+    background: var(--surface);
+  
+    transition:
+      opacity 0.2s ease,
+      background 0.2s ease;
+  }
+  
+  .script-row.skipped {
+    opacity: 0.55;
+  }
+  
+  .script-number {
+    width: 30px;
+    height: 30px;
+  
+    flex: 0 0 30px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 50%;
+  
+    background: var(--surface-2);
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  }
+  
+  .script-text {
+    flex: 1;
+  
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 9px;
+  
+    min-width: 0;
+  
+    font-size: 13px;
+  
+    line-height: 1.5;
+  }
+  
+  .skip-label {
+    flex: 0 0 auto;
+  
+    padding: 3px 6px;
+  
+    border-radius: 5px;
+  
+    background: var(--surface-2);
+  
+    color: var(--muted);
+  
+    font-size: 8px;
+  
+    letter-spacing: 0.1em;
+  }
+  
+  .script-actions {
+    display: flex;
+  
+    gap: 3px;
+  }
+  
+  .script-actions button {
+    width: 29px;
+    height: 29px;
+  
+    border: 0;
+  
+    border-radius: 8px;
+  
+    background: transparent;
+  
+    color: var(--muted);
+  
+    font-size: 12px;
+  }
+  
+  .script-actions button:hover {
+    background: var(--surface-2);
+  }
+  
+  .script-actions button.active {
+    background: var(--surface-2);
+  
+    color: var(--text);
+  }
+  
+  .script-actions button:disabled {
+    opacity: 0.2;
+  
+    cursor: default;
+  }
+  
+  .edit-card {
+    flex: 1;
+  }
+  
+  .edit-actions {
+    display: flex;
+  
+    gap: 6px;
+  
+    margin-top: 6px;
+  }
+  
+  .edit-actions button {
+    padding: 5px 9px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 7px;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  
+    font-size: 10px;
+  }
+  
+  
+  /* =====================================
+     ADD CARD
+  ===================================== */
+  
+  .add-card {
+    display: grid;
+  
+    grid-template-columns: 1fr auto;
+  
+    gap: 8px;
+  
+    margin-top: 14px;
+  }
+  
+  .add-card .primary-button {
+    width: 46px;
+  
+    padding: 0;
+  
+    font-size: 20px;
+  }
+  
+  
+  /* =====================================
+     START
+  ===================================== */
+  
+  .start-button {
+    width: 100%;
+  
+    margin-top: 28px;
+  
+    padding: 16px;
+  
+    border: 0;
+  
+    border-radius: 14px;
+  
+    background: var(--accent);
+  
+    color: var(--accent-text);
+  
+    font-size: 14px;
+  
+    letter-spacing: 0.08em;
+  
+    transition:
+      transform 0.2s ease;
+  }
+  
+  .start-button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .start-button:disabled {
+    opacity: 0.35;
+  
+    cursor: default;
+  }
+  
+  
+  /* =====================================
+     CARD SCREEN
+  ===================================== */
+  
+  .card-screen {
+    min-height:
+      calc(100vh - 100px);
+  
+    display: flex;
+  
+    flex-direction: column;
+  }
+  
+  .card-back {
+    align-self: flex-start;
+  }
+  
+  .card-stage {
+    flex: 1;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    padding:
+      5px 0
+      30px;
+  }
+  
+  
+  /* =====================================
+     BIG CARD
+  ===================================== */
+  
+  .big-card {
+    position: relative;
+  
+    width: min(86vw, 480px);
+  
+    /*
+     * スマホでは縦長
+     */
+    aspect-ratio: 0.70;
+  
+    max-height: 67vh;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    padding:
+      50px 30px
+      35px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 25px;
+  
+    background: var(--surface);
+  
+    box-shadow:
+      0 18px 45px
+      rgba(0,0,0,0.08);
+  
+    user-select: none;
+  
+    touch-action: pan-y;
+  
+    transition:
+      transform 0.18s ease;
+  }
+  
+  .card-counter {
+    position: absolute;
+  
+    top: 18px;
+    right: 20px;
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  
+    letter-spacing: 0.05em;
+  }
+  
+  .card-symbol {
+    margin-bottom: 25px;
+  
+    color: var(--muted);
+  
+    font-size: 30px;
+  }
+  
+  .card-body {
+    width: 100%;
+  
+    text-align: center;
+  }
+  
+  .card-eyebrow {
+    display: block;
+  
+    margin-bottom: 18px;
+  
+    color: var(--muted);
+  
+    font-size: 9px;
+  
+    letter-spacing: 0.2em;
+  }
+  
+  .card-body h1 {
+    margin: 0;
+  
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+  
+    font-size: clamp(
+      23px,
+      6vw,
+      35px
+    );
+  
+    font-weight: 400;
+  
+    line-height: 1.6;
+  
+    overflow-wrap: anywhere;
+  }
+  
+  .card-hint {
+    position: absolute;
+  
+    bottom: 18px;
+  
+    color: var(--muted);
+  
+    font-size: 9px;
+  
+    opacity: 0.65;
+  
+    letter-spacing: 0.08em;
+  }
+  
+  
+  /* =====================================
+     CARD CONTROLS
+  ===================================== */
+  
+  .card-controls {
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    gap: 18px;
+  
+    margin-top: 20px;
+  }
+  
+  .card-controls button {
+    min-width: 48px;
+    min-height: 42px;
+  
+    border:
+      1px solid
+      var(--line);
+  
+    border-radius: 12px;
+  
+    background: var(--surface);
+  
+    color: var(--text);
+  }
+  
+  .card-controls button:disabled {
+    opacity: 0.2;
+  
+    cursor: default;
+  }
+  
+  .card-controls .skip-control {
+    padding:
+      0 20px;
+  
+    color: var(--muted);
+  
+    font-size: 11px;
+  }
+  
+  
+  /* =====================================
+     POP THEME
+  ===================================== */
+  
+  .app.pop {
+    --bg: #fff3d8;
+    --surface: #fffdf7;
+    --surface-2: #ffe5a5;
+    --text: #40344f;
+    --muted: #92758b;
+    --line: #f4bfd0;
+    --accent: #ff6f91;
+    --accent-text: #ffffff;
+  
+    background:
+      radial-gradient(
+        circle at 8% 10%,
+        rgba(255, 214, 91, 0.5) 0 32px,
+        transparent 33px
+      ),
+      radial-gradient(
+        circle at 91% 25%,
+        rgba(111, 213, 255, 0.35) 0 25px,
+        transparent 26px
+      ),
+      var(--bg);
+  }
+  
+  .app.pop .theme-switcher button.active {
+    transform:
+      rotate(-6deg)
+      scale(1.12);
+  }
+  
+  .app.pop .calendar-card {
+    border:
+      2px solid
+      #ffc4d3;
+  
+    box-shadow:
+      6px 7px 0
+      #ffd75d;
+  }
+  
+  .app.pop .calendar-day {
+    border-radius: 14px;
+  }
+  
+  .app.pop .calendar-day:hover {
+    background: #fff0b7;
+  
+    transform:
+      rotate(-2deg);
+  }
+  
+  .app.pop .calendar-day.selected {
+    background: #ffffff;
+  
+    box-shadow:
+      inset 0 0 0 2px
+      #ff9fba;
+  
+    transform:
+      rotate(2deg);
+  }
+  
+  .app.pop .calendar-day.today .day-number {
+    background: #ffd75d;
+  
+    box-shadow: none;
+  
+    font-weight: 700;
+  }
+  
+  .app.pop .plan-card {
+    border:
+      2px solid
+      #ffc3d2;
+  
+    box-shadow:
+      4px 4px 0
+      #ffd75d;
+  }
+  
+  .app.pop .plan-card:hover {
+    box-shadow:
+      7px 7px 0
+      #8edcff;
+  
+    transform:
+      translate(-2px, -2px)
+      rotate(-1deg);
+  }
+  
+  .app.pop .plan-symbol,
+  .app.pop .logo-mark {
+    color: #ff6f91;
+  }
+  
+  .app.pop .primary-button,
+  .app.pop .start-button {
+    background: #ff6f91;
+  
+    box-shadow:
+      4px 4px 0
+      #ffd75d;
+  }
+  
+  .app.pop .primary-button:hover,
+  .app.pop .start-button:hover {
+    transform:
+      translate(-2px, -2px);
+  }
+  
+  .app.pop .template-card {
+    border:
+      2px solid
+      #cbb8ff;
+  }
+  
+  .app.pop .template-card:hover {
+    background: #fff;
+  
+    transform:
+      translateY(-3px)
+      rotate(-2deg);
+  }
+  
+  .app.pop .script-row {
+    border:
+      2px solid
+      #cbb8ff;
+  
+    background: #fffdf9;
+  }
+  
+  .app.pop .script-row:nth-child(3n + 1) {
+    box-shadow:
+      4px 4px 0
+      #ffd75d;
+  }
+  
+  .app.pop .script-row:nth-child(3n + 2) {
+    box-shadow:
+      4px 4px 0
+      #8edcff;
+  }
+  
+  .app.pop .script-row:nth-child(3n) {
+    box-shadow:
+      4px 4px 0
+      #ff9fba;
+  }
+  
+  .app.pop .big-card {
+    border:
+      3px solid
+      #ff9fba;
+  
+    box-shadow:
+      10px 10px 0
+      #ffd75d;
+  
+    background:
+      radial-gradient(
+        circle at 15% 15%,
+        rgba(142, 220, 255, 0.35) 0 22px,
+        transparent 23px
+      ),
+      radial-gradient(
+        circle at 85% 80%,
+        rgba(203, 184, 255, 0.28) 0 27px,
+        transparent 28px
+      ),
+      #fffdf9;
+  
+    animation:
+      popCardAppear 0.4s ease;
+  }
+  
+  .app.pop .card-symbol {
+    color: #ff6f91;
+  
+    transform:
+      rotate(10deg);
+  }
+  
+  .app.pop .card-controls .skip-control {
+    background: #ffd75d;
+  
+    border-color: #ffd75d;
+  
+    color: #40344f;
+  }
+  
+  @keyframes popCardAppear {
+    from {
+      opacity: 0;
+  
+      transform:
+        translateY(10px)
+        rotate(-2deg)
+        scale(0.97);
+    }
+  
+    to {
+      opacity: 1;
+  
+      transform:
+        translateY(0)
+        rotate(0deg)
+        scale(1);
+    }
+  }
+  
+  
+  /* =====================================
+     DARK THEME
+  ===================================== */
+  
+  .app.dark {
+    --bg: #28292b;
+    --surface: #323437;
+    --surface-2: #3b3d40;
+    --text: #e8e6df;
+    --muted: #999b9f;
+    --line: #4b4d50;
+    --accent: #b8b5a9;
+    --accent-text: #28292b;
+  
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(255,255,255,0.04),
+        transparent 35%
+      ),
+      var(--bg);
+  }
+  
+  .app.dark .big-card {
+    box-shadow:
+      0 20px 55px
+      rgba(0,0,0,0.35);
+  }
+  
+  
+  /* =====================================
+     MOBILE
+  ===================================== */
+  
+  @media (max-width: 600px) {
+  
+    .header {
+      padding:
+        22px 18px
+        14px;
+    }
+  
+    .logo-area {
+      gap: 10px;
+    }
+  
+    .logo-mark {
+      font-size: 24px;
+    }
+  
+    .logo-area h1 {
+      font-size: 21px;
+    }
+  
+    .logo-area p {
+      font-size: 9px;
+    }
+  
+    .theme-switcher button {
+      width: 31px;
+      height: 31px;
+  
+      font-size: 11px;
+    }
+  
+  
+    .main {
+      padding:
+        8px 16px
+        35px;
+    }
+  
+  
+    .calendar-card {
+      margin-top: 5px;
+  
+      padding: 16px;
+  
+      border-radius: 18px;
+    }
+  
+    .calendar-day {
+      min-height: 43px;
+    }
+  
+  
+    .new-plan-row {
+      grid-template-columns:
+        1fr auto;
+  
+    }
+  
+    .new-plan-row input[type="date"] {
+      grid-column: 1 / 2;
+    }
+  
+    .new-plan-row .primary-button {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+    }
+  
+  
+    .template-grid {
+      grid-template-columns:
+        repeat(2, 1fr);
+    }
+  
+  
+    .script-row {
+      gap: 8px;
+  
+      padding:
+        9px;
+    }
+  
+    .script-actions {
+      gap: 1px;
+    }
+  
+    .script-actions button {
+      width: 26px;
+      height: 26px;
+    }
+  
+  
+    /*
+     * スマホのカード
+     * 横幅を抑えて縦長にする
+     */
+  
+    .card-screen {
+      min-height:
+        calc(100vh - 90px);
+    }
+  
+    .card-stage {
+      padding:
+        0 0 20px;
+    }
+  
+    .big-card {
+      width: min(
+        82vw,
+        360px
+      );
+  
+      aspect-ratio: 0.67;
+  
+      max-height:
+        66vh;
+  
+      padding:
+        45px 24px
+        35px;
+  
+      border-radius: 23px;
+    }
+  
+    .card-body h1 {
+      font-size: 25px;
+    }
+  
+    .card-controls {
+      gap: 10px;
+  
+      margin-top: 15px;
+    }
+  
+    .card-controls button {
+      min-width: 44px;
+    }
+  
+  }
+  
+  
+  /* =====================================
+     VERY SMALL PHONE
+  ===================================== */
+  
+  @media (max-width: 380px) {
+  
+    .header {
+      padding-left: 13px;
+      padding-right: 13px;
+    }
+  
+    .main {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  
+    .calendar-card {
+      padding: 12px;
+    }
+  
+    .big-card {
+      width: 82vw;
+  
+      max-height: 62vh;
+    }
+  
+    .card-body h1 {
+      font-size: 22px;
+    }
+  
+  }
